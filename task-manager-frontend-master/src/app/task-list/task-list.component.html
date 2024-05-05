@@ -1,0 +1,37 @@
+<div class="listing-page">
+  <h2>Add new <strong>Task</strong></h2>
+  <form (ngSubmit)="addTask()">
+    <input type="text" [(ngModel)]="newTask.title" name="title" placeholder="Type your title of the task"><br>
+    <input type="text" [(ngModel)]="newTask.description" name="description" placeholder="Type your description of the task"><br>
+    <input type="date" [(ngModel)]="newTask.deadline" name="deadline"><br>
+    <button type="submit">Add Task</button>
+  </form>
+
+  <table>
+    <thead>
+    <tr>
+      <th>
+        Title
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Deadline
+      </th>
+      <th>
+        Completed
+      </th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let task of tasks">
+      <tr>
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.deadline }}</td>
+        <td><input type="checkbox" [ngModel]="task.completed" (ngModelChange)="updateTask(task)"></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
